@@ -8,7 +8,7 @@ pipeline{
         stages{
             stage('Git-Checkout')
             {
-                steps{
+              steps{
                      git 'https://github.com/sreelakshmi665/MavenSample.git'
                 }
             }
