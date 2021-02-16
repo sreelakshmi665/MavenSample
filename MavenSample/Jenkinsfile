@@ -1,0 +1,55 @@
+pipeline{
+    agent any
+   
+    tools { 
+        maven 'Maven'
+      
+    }
+        stages{
+            stage('Git-Checkout')
+            {
+                steps{
+                     git ''
+                }
+            }
+             stage('Validate')
+        {
+            steps{
+                bat 'mvn -f HelloWorld/pom.xml validate'
+            }
+        }
+        stage('Compile')
+        {
+            steps{
+                bat 'mvn -f HelloWorld/pom.xml compile'
+            }
+        }
+        stage('Test')
+        {
+            steps{
+                bat 'mvn -f HelloWorld/pom.xml test'
+            }
+        }
+        stage('Package')
+        {
+            steps{
+                bat 'mvn -f HelloWorld/pom.xml package'
+            }
+        }
+        stage('Verify')
+        {
+            steps{
+                bat 'mvn -f HelloWorld/pom.xml verify'
+            }
+        }
+        stage('Install')
+        {
+            steps{
+                bat 'mvn -f HelloWorld/pom.xml install'
+            }
+        }
+            
+            
+           
+        }
+}
